@@ -5,6 +5,10 @@ const friendsRouter = require('./routes/friends.router');
 const messagesRouter = require('./routes/messages.router');
 
 const app = express();
+
+app.set('view engine', 'hbs');
+app.set('views', path.join(__dirname, "views"));
+
 const PORT = 3000;
 
 //custom middleware for logging
@@ -20,8 +24,12 @@ app.use((req, res, next) => {
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  res.send("Hello");
+  res.render('index.hbs', {
+      title:"My Friends",
+      caption:"Let\'s go skiing!!!",
+  })
 })
+
 
 app.use("/site", express.static(path.join(__dirname, "public")));
 app.use("/friends", friendsRouter);

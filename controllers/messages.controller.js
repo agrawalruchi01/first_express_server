@@ -1,7 +1,10 @@
 const path = require('path');
 
 function getMessages(req,res) {
-    res.send('<ul><li>Hi Sir Isaac Newton</li></ul>');
+    res.render('messages', {
+        friend: "Isaac Newton",
+        message: "Astronomy is an awesome field!!!"
+    });
 };
 
 function getMessageFile(req, res) {
